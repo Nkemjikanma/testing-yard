@@ -8,7 +8,7 @@ import App from "./App";
 test("Button has correct initial color, and updates when clicked", () => {
   //* Using logRoles to find what roles in the app are
   const { container } = render(<App />);
-  logRoles(container);
+  //logRoles(container);
 
   //* We are getting element with role of button and initial text of "Change to Blue"
   const colorButton = screen.getByRole("button", { name: "Change to blue" });
@@ -36,14 +36,60 @@ test("Check initial conditions", () => {
 });
 
 test("Check enables button on first click and disables button on second", () => {
-  render(<App />);
+  const { container } = render(<App />);
+  logRoles(container);
 
   const colorButton = screen.getByRole("button");
   const checkBox = screen.getByRole("checkbox");
+  //? Getting checkbox by labelText
+  const checkBoxLabel = screen.getByLabelText("Disable Button");
 
   fireEvent.click(checkBox);
   expect(colorButton).toBeDisabled();
 
+  fireEvent.click(checkBoxLabel);
+  expect(colorButton).toBeEnabled();
+});
+
+test("Flow 1 - disable button, button grey. enable button, button red", () => {
+  render(<App />);
+
+  const colorButton = screen.getByRole("button");
+  const checkBox = screen.getByLabelText("Disable Button");
+
+  fireEvent.click(checkBox);
+  expect(colorButton).toBeDisabled();
+  expect(colorButton).toHaveStyle({
+    backgroundColor: "gray",
+  });
+
   fireEvent.click(checkBox);
   expect(colorButton).toBeEnabled();
+  expect(colorButton).toHaveStyle({
+    backgroundColor: "red",
+  });
+});
+
+test("Flow 2 - change color, disable button, button gray", () => {
+  render(<App />);
+
+  const colorButton = screen.getByRole("button");
+  const checkBox = screen.getByLabelText("Disable Button");
+
+  fireEvent.click(colorButton);
+  expect(colorButton).toHaveStyle({
+    background: "blue",
+  });
+
+  fireEvent.click(checkBox);
+  expect(colorButton).toBeDisabled();
+  expect(colorButton).toHaveStyle({
+    backgroundColor: "gray",
+  });
+
+  fireEvent.click(checkBox);
+  expect(colorButton).toBeEnabled();
+  expect(colorButton).toHaveStyle({
+    backgroundColor: "blue",
+  });
 });

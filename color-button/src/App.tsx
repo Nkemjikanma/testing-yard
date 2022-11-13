@@ -11,19 +11,25 @@ const App: React.FC = () => {
         onClick={() => {
           setButtonColor(newButtonColor);
         }}
-        style={{ backgroundColor: buttonColor }}
+        style={
+          !isDisabled
+            ? { backgroundColor: buttonColor }
+            : { backgroundColor: "gray" }
+        }
         disabled={isDisabled}
       >
         Change to {newButtonColor}
       </button>
-
+      <br />
       <input
         type="checkbox"
+        id="checkbox-for-button"
         defaultChecked={isDisabled}
         onChange={(e) => {
           setIsDisabled(e.target.checked);
         }}
       />
+      <label htmlFor="checkbox-for-button">Disable Button</label>
     </div>
   );
 };
