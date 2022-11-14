@@ -5,6 +5,9 @@ import { describe, it } from "vitest";
 // components
 import App from "./App";
 
+// functions
+import { replaceCamelWithSpace } from "./App";
+
 test("Button has correct initial color, and updates when clicked", () => {
   //* Using logRoles to find what roles in the app are
   const { container } = render(<App />);
@@ -91,5 +94,17 @@ test("Flow 2 - change color, disable button, button gray", () => {
   expect(colorButton).toBeEnabled();
   expect(colorButton).toHaveStyle({
     backgroundColor: "blue",
+  });
+});
+
+describe("Adding spaces to camel case strings", () => {
+  test("works for color names without inner capital letters", () => {
+    expect(replaceCamelWithSpace("red")).toBe("red");
+  });
+  test("Works for colors names with one inner capital letter", () => {
+    expect(replaceCamelWithSpace("MidnightBlue")).toBe("Midnight Blue");
+  });
+  test("Works for multiple inner capital letters", () => {
+    expect(replaceCamelWithSpace("MediumVioletRed")).toBe("Medium Violet Red");
   });
 });
