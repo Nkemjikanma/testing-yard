@@ -4,7 +4,7 @@ import { expect } from 'vitest';
 expect.extend(matchers);
 
 // src/setupTests.js
-import { server } from '../src/mocks/server'
+import { server } from './mocks/server'
 // Establish API mocking before all tests.
 beforeAll(() => server.listen())
 
