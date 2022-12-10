@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 // components
 import SummaryForm from '../SummaryForm';
-import App from '../../../../App';
+import App from '../../../App';
 
 describe('Testing that the SummaryForm component works as expected', () => {
     test('Testing that checking the checkbox is not checked and button is diabled', () => {

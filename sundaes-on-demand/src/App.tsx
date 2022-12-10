@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // components
-import SummaryForm from './components/pages/summary/SummaryForm';
+import SummaryForm from './components/summary/SummaryForm';
 
 function App() {
     return (
