@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
+// components
+import SummaryForm from './components/summary/SummaryForm';
+
 function App() {
     return (
-        <div className="App" id="app-id">
-            <h1>Hello World!</h1>
+        <div
+            className="App w-full overflow-hidden bg-slate-400 flex flex-row justify-center"
+            id="app-id"
+        >
+            <SummaryForm />
         </div>
     );
 }

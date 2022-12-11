@@ -40,7 +40,7 @@ test("Check initial conditions", () => {
 
 test("Check enables button on first click and disables button on second", () => {
   const { container } = render(<App />);
-  logRoles(container);
+  //logRoles(container);
 
   const colorButton = screen.getByRole("button");
   const checkBox = screen.getByRole("checkbox");
