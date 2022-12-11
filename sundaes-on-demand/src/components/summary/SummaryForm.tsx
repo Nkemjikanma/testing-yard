@@ -4,40 +4,41 @@ const SummaryForm: React.FC = () => {
     const [tcChecked, setTCChecked] = useState<boolean>(false);
     const [showPopup, setShowPopup] = useState<string>('hidden');
 
+    // const popup = () => {
+    //  <div className={`absolute w-16 h-5 bg-green-800 ${showPopup} z-10`}>
+    //     <div>
+    //         <p>No icecream will actually be delivered</p>
+    //     </div>
+    // </div>
+    // };
+
     const checkBoxLabel = (
-        <span>
+        <span className="">
             I agree to{' '}
-            <span
-                className="underline text-red-700"
-                onMouseOver={() => {
-                    setShowPopup('block');
-                }}
-                onMouseOut={() => {
-                    setShowPopup('hidden');
-                }}
-            >
+            <span className="text-red-700 hover:underline transition-all group">
                 Terms and Condtions
+                <div
+                    className={`absolute w-44 h-50 bg-slate-800 right-0 -top-1 opacity-0 group-hover:opacity-100 text-center rounded-lg`}
+                    data-testid='popup-div'
+                >
+                    <div>
+                        <p>No icecream will actually be delivered</p>
+                    </div>
+                </div>
             </span>
         </span>
     );
 
-    const popup = () => {
-        <div className={`absolute w-16 h-5 bg-red-800 border border-1 border-black ${showPopup}`}>
-            <div className={``}>
-                <p>No icecream will actually be delivered</p>
-            </div>
-        </div>;
-    };
-
     const handleSubmit = () => {};
 
     return (
-        <div className="w-[800px] h-[550px] bg-slate-600 m-5 rounded-md p-5 grid place-items-center">
+        <div className=" w-[800px] h-[550px] bg-slate-600 m-5 rounded-md p-5 grid place-items-center">
             <form
                 onSubmit={handleSubmit}
-                className="w-[90%] h-[90%] flex flex-col"
+                className=" w-[90%] h-[90%] flex flex-col relative"
+
             >
-                <div className="checkbox-holder h-10 p-1 border border-1 flex flex-row justify-center align-middle gap-3">
+                <div className="checkbox-holder h-10 p-1 flex flex-row justify-center align-middle gap-3">
                     <input
                         type="checkbox"
                         id="checkbox"

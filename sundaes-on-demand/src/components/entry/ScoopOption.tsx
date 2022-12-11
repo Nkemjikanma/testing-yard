@@ -11,7 +11,7 @@ const ScoopOption = (props: Props) => {
             <img
             className=''
                 alt={`${props.name} scoop`}
-                src={`http://localhost:3030/${props.imagePath}`}
+                src={`http://localhost:3030${props.imagePath}`}
             />
         </div>
     );

@@ -51,14 +51,19 @@ describe('Testing that the SummaryForm component works as expected', () => {
 
         //popover appears on hover
         const termsAndConditions = screen.getByText("Terms and Condtions");
-        await user.hover(termsAndConditions);
+        await userEvent.hover(termsAndConditions);
         const popup = screen.queryByText(
-            'No ice cream will actually be delivered'
+            'No icecream will actually be delivered'
         );
         expect(popup).toBeInTheDocument();
 
         //popover disappears on unhover
+        const popupDiv = screen.getByTestId('popup-div')
         await user.unhover(termsAndConditions);
-        expect(popup).not.toBeInTheDocument();
+        expect(popupDiv).toHaveClass('opacity-0');
     });
 });
+
+// const hideAnchor = screen.getByTestId('sticky-link-icon')
+// await userEvent.unhover(hideAnchor)
+// expect(showAnchor).toHaveClass('sm:opacity-0')
