@@ -11,7 +11,11 @@ const AlertBanner: FC<Props> = ({ ...props }) => {
         message = 'An unexpected error occured. Please try again later.',
         variant = 'danger',
     } = props;
-    return <div className="bg-red-500">{message}</div>;
+    return (
+        <div className={variant === 'danger' ? `bg-red-500` : ''}>
+            {message}
+        </div>
+    );
 };
 
 export default AlertBanner;

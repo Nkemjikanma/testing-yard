@@ -1,6 +1,13 @@
-type Props = {}
+import Options from './Options';
+
+type Props = {};
 
 const OrderEntry = () => {
-
-}
-export default OrderEntry
+    return (
+        <div>
+            <Options optionType="scoops" />
+            <Options optionType="toppings" />
+        </div>
+    );
+};
+export default OrderEntry;

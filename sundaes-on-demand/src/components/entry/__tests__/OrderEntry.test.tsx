@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import OrderEntry from '../OrderEntry';
 
 //imports so we can overide the default handlers and test for errors
 import { rest } from 'msw';
 import { server } from '../../../mocks/server';
 
+//use .only if yyou want to run only one test
 test('Handles errors for scoops and toppings routes', async () => {
     //reset handlers take handlers as args and resets any handlers taht has those endpoints
 
@@ -20,8 +21,8 @@ test('Handles errors for scoops and toppings routes', async () => {
 
     render(<OrderEntry />);
 
-    const alerts = await screen.findAllByRole('alert', {
-        name: 'An unexpected error occured. Please try again later.',
+    waitFor(async () => {
+        const alerts = await screen.findAllByRole('alert');
+        expect(alerts).toHaveLength(2);
     });
-    expect(alerts).toHaveLength(2);
 });
