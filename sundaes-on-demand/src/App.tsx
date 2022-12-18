@@ -12,9 +12,10 @@ function App() {
             id="app-id"
         >
             <OrderDetailsProvider>
-                {/* Summary page and entry page need a provider] */}
+                {/* Summary page and entry page need a provider */}
                 <OrderEntry />
             </OrderDetailsProvider>
+            {/* confirmation page does not need provider */}
         </div>
     );
 }
